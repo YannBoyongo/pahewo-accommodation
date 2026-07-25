@@ -1,0 +1,197 @@
+@import 'tailwindcss';
+
+@source '../views';
+@source '../../app/Livewire';
+
+@theme {
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+
+    /* Deep plum anchors the interface without overusing the brighter logo pink. */
+    --color-chocolate-50: #fbf7f9;
+    --color-chocolate-100: #f3e8ed;
+    --color-chocolate-200: #e4cbd6;
+    --color-chocolate-300: #cba1b4;
+    --color-chocolate-400: #a96f88;
+    --color-chocolate-500: #87445f;
+    --color-chocolate-600: #6f314b;
+    --color-chocolate-700: #57243a;
+    --color-chocolate-800: #3f192b;
+    --color-chocolate-900: #29101d;
+    --color-chocolate-950: #180811;
+
+    /* Warm yellow from the logo flower is reserved for key actions and highlights. */
+    --color-gold-300: #ffea80;
+    --color-gold-400: #ffdc3f;
+    --color-gold-500: #f4c800;
+    --color-gold-600: #cda600;
+
+    /* Logo magenta is a restrained accent for labels, focus states, and details. */
+    --color-terracotta-400: #d43a7b;
+    --color-terracotta-500: #be1e63;
+    --color-terracotta-600: #9d174f;
+
+    --color-beige: #fffaf1;
+    --color-ink: #241820;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+@keyframes partner-marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.partner-marquee-track {
+    animation: partner-marquee 28s linear infinite;
+}
+
+.partner-marquee:hover .partner-marquee-track,
+.partner-marquee:focus-within .partner-marquee-track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partner-marquee-track {
+        animation: none;
+    }
+}
+
+body {
+    @apply font-sans text-ink antialiased bg-white;
+}
+
+@utility btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-chocolate-700 px-7 py-3.5 text-sm font-medium tracking-wide text-white shadow-md shadow-chocolate-900/20 transition duration-300 hover:-translate-y-0.5 hover:bg-chocolate-800 hover:shadow-lg hover:shadow-chocolate-900/30;
+}
+
+@utility btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-chocolate-700 bg-white px-7 py-3.5 text-sm font-medium tracking-wide text-chocolate-700 transition duration-300 hover:bg-chocolate-700 hover:text-white;
+}
+
+@utility btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gold-500 px-7 py-3.5 text-sm font-semibold tracking-wide text-chocolate-900 shadow-md shadow-gold-600/30 transition duration-300 hover:-translate-y-0.5 hover:bg-gold-400 hover:shadow-lg;
+}
+
+@utility glass-nav {
+    @apply bg-chocolate-900/70 backdrop-blur-xl border-b border-white/10;
+}
+
+@utility section-label {
+    @apply text-xs font-semibold uppercase tracking-[0.25em] text-terracotta-500;
+}
+
+@utility input-luxe {
+    @apply w-full rounded-xl border border-chocolate-200 bg-white px-4 py-2.5 text-sm text-ink placeholder:text-neutral-400 focus:border-chocolate-700 focus:outline-none focus:ring-2 focus:ring-chocolate-700/20;
+}
+
+@utility card-luxe {
+    @apply rounded-2xl bg-white shadow-lg shadow-chocolate-900/5 ring-1 ring-chocolate-100 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-chocolate-900/10;
+}
+
+@utility hero-nav-logo {
+    @apply block shrink-0 transition duration-300 hover:opacity-90;
+}
+
+@utility hero-nav-link {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-white/85 transition hover:text-gold-300;
+}
+
+@utility hero-nav-link-dark {
+    @apply text-[16px] font-bold uppercase tracking-[0.08em] text-white transition hover:text-gold-300 hero-text-shadow;
+}
+
+@utility hero-nav-link-dark-active {
+    @apply text-gold-300 underline decoration-2 underline-offset-8;
+}
+
+@utility hero-text-shadow {
+    text-shadow: 0 2px 8px rgba(26, 31, 22, 0.55), 0 4px 24px rgba(26, 31, 22, 0.35);
+}
+
+@utility nav-link {
+    @apply text-sm font-medium text-white/90 transition hover:text-gold-400;
+}
+
+@utility nav-link-active {
+    @apply text-gold-300 underline decoration-2 underline-offset-8;
+}
+
+@utility mobile-nav-link {
+    @apply block py-2.5 text-sm font-semibold uppercase tracking-[0.18em] text-white/85 transition hover:text-gold-300;
+}
+
+@utility mobile-nav-link-active {
+    @apply border-l-2 border-gold-400 bg-white/10 pl-4 text-gold-300;
+}
+
+@utility public-nav-link {
+    @apply text-[15px] font-bold leading-6 uppercase tracking-[0.16em] text-chocolate-700 transition hover:text-terracotta-500;
+}
+
+@utility public-nav-link-active {
+    @apply text-terracotta-500 underline decoration-2 underline-offset-8;
+}
+
+@utility public-mobile-nav-link {
+    @apply block py-3 text-sm font-semibold uppercase tracking-[0.14em] text-chocolate-700 transition hover:text-terracotta-500;
+}
+
+@utility public-mobile-nav-link-active {
+    @apply border-l-2 border-terracotta-500 pl-4 text-terracotta-500;
+}
+
+@utility auth-link {
+    @apply text-sm text-chocolate-600 transition hover:text-chocolate-800 hover:underline underline-offset-4;
+}
+
+@utility admin-sidebar-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-white/70 transition hover:bg-white/10 hover:text-white;
+}
+
+@utility admin-sidebar-link-active {
+    @apply bg-white/10 text-gold-300;
+}
+
+@utility admin-stat-card {
+    @apply rounded-2xl bg-white p-6 shadow-lg shadow-chocolate-900/5 ring-1 ring-chocolate-100;
+}
+
+@utility hero-booking-input {
+    @apply w-full border-0 bg-transparent p-0 text-sm font-medium text-white outline-none focus:ring-0;
+    color-scheme: dark;
+}
+
+@utility font-serif {
+    font-family: var(--font-serif);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
