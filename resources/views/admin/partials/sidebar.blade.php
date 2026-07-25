@@ -4,6 +4,7 @@
         ['route' => 'dashboard.rooms.index', 'label' => 'Rooms', 'icon' => 'rooms', 'patterns' => ['dashboard.rooms.*']],
         ['route' => 'dashboard.experiences.index', 'label' => 'Experiences', 'icon' => 'experiences', 'patterns' => ['dashboard.experiences.*']],
         ['route' => 'dashboard.partners.index', 'label' => 'Partners', 'icon' => 'partners', 'patterns' => ['dashboard.partners.*']],
+        ['route' => 'dashboard.testimonials.index', 'label' => 'Testimonials', 'icon' => 'testimonials', 'patterns' => ['dashboard.testimonials.*']],
     ];
 
     $operationsLinks = [

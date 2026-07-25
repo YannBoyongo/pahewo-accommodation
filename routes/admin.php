@@ -5,10 +5,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\HeroSectionController;
-use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -22,6 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rooms', RoomController::class)->scoped(['room' => 'id']);
         Route::resource('experiences', ExperienceController::class)->scoped(['experience' => 'id']);
         Route::resource('partners', PartnerController::class)->scoped(['partner' => 'id']);
+        Route::resource('testimonials', TestimonialController::class)
+            ->except('show')
+            ->scoped(['testimonial' => 'id']);
 
         Route::resource('bookings', BookingController::class)
             ->only(['index', 'show', 'edit', 'update', 'destroy'])

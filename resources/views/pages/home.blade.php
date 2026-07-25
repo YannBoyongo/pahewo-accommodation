@@ -148,64 +148,48 @@
     @endif
 
     {{-- Guest reviews --}}
-    @php
-        $guestReviews = [
-            [
-                'quote' => $pageContent->value('review_one_quote'),
-                'guest' => $pageContent->value('review_one_guest'),
-                'stay' => $pageContent->value('review_one_stay'),
-            ],
-            [
-                'quote' => $pageContent->value('review_two_quote'),
-                'guest' => $pageContent->value('review_two_guest'),
-                'stay' => $pageContent->value('review_two_stay'),
-            ],
-            [
-                'quote' => $pageContent->value('review_three_quote'),
-                'guest' => $pageContent->value('review_three_guest'),
-                'stay' => $pageContent->value('review_three_stay'),
-            ],
-        ];
-    @endphp
+    @if ($testimonials->isNotEmpty())
+        <section class="border-y border-chocolate-100 bg-beige py-20 sm:py-24" x-data="{ activeReview: 0 }">
+            <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
+                <div class="reveal">
+                    <p class="section-label">{{ $pageContent->value('reviews_label') }}</p>
+                    <h2 class="mt-4 font-serif text-4xl font-semibold uppercase tracking-[0.04em] text-chocolate-900 sm:text-5xl lg:text-6xl">
+                        {{ $pageContent->value('reviews_heading') }}
+                    </h2>
+                    <div class="mx-auto mt-7 max-w-3xl border-t border-chocolate-700/50"></div>
+                </div>
 
-    <section class="border-y border-chocolate-100 bg-beige py-20 sm:py-24" x-data="{ activeReview: 0 }">
-        <div class="mx-auto max-w-5xl px-6 text-center lg:px-8">
-            <div class="reveal">
-                <p class="section-label">{{ $pageContent->value('reviews_label') }}</p>
-                <h2 class="mt-4 font-serif text-4xl font-semibold uppercase tracking-[0.04em] text-chocolate-900 sm:text-5xl lg:text-6xl">
-                    {{ $pageContent->value('reviews_heading') }}
-                </h2>
-                <div class="mx-auto mt-7 max-w-3xl border-t border-chocolate-700/50"></div>
-            </div>
+                <div class="relative mx-auto mt-12 min-h-[17rem] max-w-4xl sm:mt-16 sm:min-h-[15rem]" aria-live="polite">
+                    @foreach ($testimonials as $testimonial)
+                        <figure x-show="activeReview === {{ $loop->index }}" x-cloak x-transition.opacity.duration.300ms class="absolute inset-0 flex flex-col items-center justify-center">
+                            <blockquote class="relative px-10 font-serif text-xl font-semibold leading-9 text-chocolate-800 sm:px-16 sm:text-2xl sm:leading-10">
+                                <span class="absolute left-0 top-0 text-5xl leading-none text-chocolate-200 sm:text-6xl" aria-hidden="true">&ldquo;</span>
+                                {{ $testimonial->quote }}
+                                <span class="absolute bottom-[-1rem] right-0 text-5xl leading-none text-chocolate-200 sm:text-6xl" aria-hidden="true">&rdquo;</span>
+                            </blockquote>
+                            <figcaption class="mt-7 text-sm text-neutral-500">
+                                <span class="font-semibold text-chocolate-800">{{ $testimonial->guest_name }}</span>
+                                @if ($testimonial->stay_type)
+                                    <span aria-hidden="true"> · </span>
+                                    {{ $testimonial->stay_type }}
+                                @endif
+                            </figcaption>
+                        </figure>
+                    @endforeach
+                </div>
 
-            <div class="relative mx-auto mt-12 min-h-[17rem] max-w-4xl sm:mt-16 sm:min-h-[15rem]" aria-live="polite">
-                @foreach ($guestReviews as $review)
-                    <figure x-show="activeReview === {{ $loop->index }}" x-cloak x-transition.opacity.duration.300ms class="absolute inset-0 flex flex-col items-center justify-center">
-                        <blockquote class="relative px-10 font-serif text-xl font-semibold leading-9 text-chocolate-800 sm:px-16 sm:text-2xl sm:leading-10">
-                            <span class="absolute left-0 top-0 text-5xl leading-none text-chocolate-200 sm:text-6xl" aria-hidden="true">&ldquo;</span>
-                            {{ $review['quote'] }}
-                            <span class="absolute bottom-[-1rem] right-0 text-5xl leading-none text-chocolate-200 sm:text-6xl" aria-hidden="true">&rdquo;</span>
-                        </blockquote>
-                        <figcaption class="mt-7 text-sm text-neutral-500">
-                            <span class="font-semibold text-chocolate-800">{{ $review['guest'] }}</span>
-                            <span aria-hidden="true"> · </span>
-                            {{ $review['stay'] }}
-                        </figcaption>
-                    </figure>
-                @endforeach
+                <div class="mt-8 flex items-center justify-center gap-3" role="group" aria-label="Choose a guest review">
+                    @foreach ($testimonials as $testimonial)
+                        <button type="button" x-on:click="activeReview = {{ $loop->index }}"
+                            class="h-3 w-3 rounded-full border border-chocolate-700 transition hover:bg-chocolate-300 focus:outline-none focus:ring-2 focus:ring-chocolate-700 focus:ring-offset-2"
+                            :class="activeReview === {{ $loop->index }} ? 'bg-chocolate-800' : 'bg-transparent'"
+                            :aria-current="activeReview === {{ $loop->index }} ? 'true' : 'false'"
+                            aria-label="Show review {{ $loop->iteration }}"></button>
+                    @endforeach
+                </div>
             </div>
-
-            <div class="mt-8 flex items-center justify-center gap-3" role="group" aria-label="Choose a guest review">
-                @foreach ($guestReviews as $review)
-                    <button type="button" x-on:click="activeReview = {{ $loop->index }}"
-                        class="h-3 w-3 rounded-full border border-chocolate-700 transition hover:bg-chocolate-300 focus:outline-none focus:ring-2 focus:ring-chocolate-700 focus:ring-offset-2"
-                        :class="activeReview === {{ $loop->index }} ? 'bg-chocolate-800' : 'bg-transparent'"
-                        :aria-current="activeReview === {{ $loop->index }} ? 'true' : 'false'"
-                        aria-label="Show review {{ $loop->iteration }}"></button>
-                @endforeach
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     {{-- Location --}}
     @php

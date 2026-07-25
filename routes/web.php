@@ -6,9 +6,11 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitemapController;
+use App\Models\Page;
 use App\Models\Partner;
 use App\Models\Room;
 use App\Models\Setting;
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -17,6 +19,11 @@ Route::get('/', function () {
         'featuredRooms' => Room::query()->where('is_featured', true)->orderBy('sort_order')->get(),
         'partners' => Partner::query()->orderByDesc('is_featured')->orderBy('name')->get(),
         'siteSettings' => Setting::instance(),
+        'testimonials' => Testimonial::query()
+            ->where('is_published', true)
+            ->orderBy('sort_order')
+            ->latest()
+            ->get(),
     ]);
 })->name('home');
 
@@ -34,13 +41,12 @@ Route::view('/conference-meeting', 'pages.conference-meeting')->name('conference
 Route::get('/contact', function () {
     return view('pages.contact', [
         'siteSettings' => Setting::instance(),
-        'pageContent'  => \App\Models\Page::managed('contact'),
+        'pageContent' => Page::managed('contact'),
     ]);
 })->name('contact');
 
 Route::get('/experiences', [ExperienceController::class, 'index'])->name('experiences.index');
 Route::get('/experiences/{experience}', [ExperienceController::class, 'show'])->name('experiences.show');
-
 
 Route::view('/about-pahewo', 'pages.about-pahewo')->name('about-pahewo');
 

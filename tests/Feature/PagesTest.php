@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Experience;
 use App\Models\Partner;
 use App\Models\Room;
+use App\Models\Testimonial;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,6 +18,9 @@ class PagesTest extends TestCase
         $room = Room::factory()->featured()->create();
         $experience = Experience::factory()->featured()->create();
         $partner = Partner::factory()->create();
+        $testimonial = Testimonial::factory()->create([
+            'quote' => 'A beautifully peaceful stay with thoughtful, attentive service.',
+        ]);
 
         $this->get(route('home'))
             ->assertOk()
@@ -27,6 +31,7 @@ class PagesTest extends TestCase
             ->assertSee($experience->name)
             ->assertSee('Built Together, Not Alone')
             ->assertSee($partner->name)
+            ->assertSee($testimonial->quote)
             ->assertSee('images/favicon.png');
     }
 
