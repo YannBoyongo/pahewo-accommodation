@@ -78,14 +78,12 @@
                 @endif
 
                 <div class="reveal mt-12 rounded-2xl bg-chocolate-900 p-8 text-white">
-                    <p class="section-label">Your stay's impact</p>
+                    <p class="section-label">{{ $pageContent->value('impact_label') }}</p>
                     <p class="mt-3 text-lg font-medium leading-relaxed">
-                        Each night in this room contributes
-                        <span class="text-gold-400">{{ \App\Support\Currency::format($room->price_per_night * \App\Models\Booking::IMPACT_SHARE) }}</span>
-                        to PAHEWO's 24/7 wellness sanctuary — before any other expense is considered.
+                        {{ $pageContent->value('impact_body') }}
                     </p>
                     <a href="{{ route('about-pahewo') }}" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gold-400 hover:text-gold-300">
-                        Learn about PAHEWO
+                        {{ $pageContent->value('impact_link') }}
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
                     </a>
                 </div>

@@ -92,10 +92,6 @@
                         <span>Total</span>
                         <span>{{ \App\Support\Currency::format($this->totalPrice()) }}</span>
                     </div>
-                    <div class="flex justify-between text-xs text-gold-600">
-                        <span>Funds 24/7 endometriosis care (15%)</span>
-                        <span class="font-semibold">{{ \App\Support\Currency::format($this->impactContribution()) }}</span>
-                    </div>
                 </div>
             @endif
 

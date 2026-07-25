@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         $managedViews = [
             'pages.home' => 'home',
             'pages.rooms' => 'rooms',
+            'pages.room-detail' => 'rooms',
             'pages.dining' => 'dining',
             'pages.conference-meeting' => 'conference-meeting',
             'pages.contact' => 'contact',

@@ -48,10 +48,14 @@ return [
         'name' => 'Rooms Page',
         'route' => 'rooms.index',
         'fields' => [
-            'header_label' => ['label' => 'Header label', 'type' => 'text', 'section' => 'Page Header', 'default' => 'Rooms & Suites'],
-            'header_title' => ['label' => 'Header title', 'type' => 'text', 'section' => 'Page Header', 'default' => 'Rest Beautifully. Give Meaningfully.'],
+            'header_label' => ['label' => 'Header label',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Rooms & Suites'],
+            'header_title' => ['label' => 'Header title',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Rest Beautifully. Give Meaningfully.'],
             'header_description' => ['label' => 'Header description', 'type' => 'textarea', 'section' => 'Page Header', 'default' => 'Every room blends contemporary comfort with Ugandan craftsmanship, and every night contributes directly to care.'],
-            'header_image' => ['label' => 'Header image', 'type' => 'image', 'section' => 'Page Header', 'default' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1800&auto=format&fit=crop'],
+            'header_image' => ['label' => 'Header image',       'type' => 'image',    'section' => 'Page Header', 'default' => 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1800&auto=format&fit=crop'],
+
+            'impact_label' => ['label' => 'Label',     'type' => 'text',     'section' => 'Impact Block (shown on every room page)', 'default' => "Your stay's impact"],
+            'impact_body'  => ['label' => 'Text',      'type' => 'textarea', 'section' => 'Impact Block (shown on every room page)', 'default' => "Every night you spend here contributes directly to PAHEWO's 24/7 endometriosis wellness sanctuary - funding real nights of medicine, sanctuary, and dignity for women and girls in Uganda."],
+            'impact_link'  => ['label' => 'Link text', 'type' => 'text',     'section' => 'Impact Block (shown on every room page)', 'default' => 'Learn about PAHEWO'],
         ],
     ],
     'dining' => [
@@ -117,29 +121,33 @@ return [
         ],
     ],
     'about-pahewo' => [
-        'name' => 'About Page',
+        'name' => 'About PAHEWO Page',
         'route' => 'about-pahewo',
         'fields' => [
-            'header_label' => ['label' => 'Header label', 'type' => 'text', 'section' => 'Page Header', 'default' => 'Our Partner'],
-            'header_title' => ['label' => 'Header title', 'type' => 'text', 'section' => 'Page Header', 'default' => 'PAHEWO — Pan African Holistic Endometriosis Wellness Organisation'],
-            'header_description' => ['label' => 'Header description', 'type' => 'textarea', 'section' => 'Page Header', 'default' => 'The reason this hotel exists. PAHEWO provides 24/7 medical wellness, sanctuary, and dignity for women and girls living with endometriosis—and every booking here keeps its doors open.'],
-            'header_image' => ['label' => 'Header image', 'type' => 'image', 'section' => 'Page Header', 'default' => 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1800&auto=format&fit=crop'],
-            'condition_label' => ['label' => 'Condition label', 'type' => 'text', 'section' => 'About Endometriosis', 'default' => 'The condition'],
-            'condition_title' => ['label' => 'Condition title', 'type' => 'text', 'section' => 'About Endometriosis', 'default' => 'What is endometriosis?'],
-            'condition_body' => ['label' => 'Condition information', 'type' => 'textarea', 'section' => 'About Endometriosis', 'default' => 'Endometriosis is a chronic condition that causes inflammation, scarring, and pain severe enough to interrupt work, study, and daily life. It affects roughly one in ten women and girls of reproductive age, and management is lifelong.'],
-            'response_label' => ['label' => 'Response label', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'The response'],
-            'response_title' => ['label' => 'Response title', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'What PAHEWO does, 24/7'],
-            'response_one_title' => ['label' => 'Service one title', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'A 24/7 care line'],
-            'response_one_description' => ['label' => 'Service one description', 'type' => 'textarea', 'section' => 'PAHEWO Response', 'default' => 'A woman in crisis can call at any hour and reach a person, not a machine.'],
-            'response_two_title' => ['label' => 'Service two title', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'A wellness sanctuary that never closes'],
-            'response_two_description' => ['label' => 'Service two description', 'type' => 'textarea', 'section' => 'PAHEWO Response', 'default' => 'Overnight stays with heat therapy, medication, warm meals, and counselling.'],
-            'response_three_title' => ['label' => 'Service three title', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'Education & advocacy'],
-            'response_three_description' => ['label' => 'Service three description', 'type' => 'textarea', 'section' => 'PAHEWO Response', 'default' => 'School visits, community education, and advocate training.'],
-            'response_four_title' => ['label' => 'Service four title', 'type' => 'text', 'section' => 'PAHEWO Response', 'default' => 'Holistic, dignity-first care'],
-            'response_four_description' => ['label' => 'Service four description', 'type' => 'textarea', 'section' => 'PAHEWO Response', 'default' => "A woman's account of her own body is the starting point of care."],
-            'partnership_label' => ['label' => 'Partnership label', 'type' => 'text', 'section' => 'Partnership', 'default' => 'The partnership'],
-            'partnership_title' => ['label' => 'Partnership title', 'type' => 'text', 'section' => 'Partnership', 'default' => "This hotel is PAHEWO's commercial engine."],
-            'partnership_body' => ['label' => 'Partnership description', 'type' => 'textarea', 'section' => 'Partnership', 'default' => "Fifteen percent of every booking is structurally committed to PAHEWO and helps keep care available around the clock."],
+            // Page Header
+            'header_label' => ['label' => 'Header label',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Our Partner'],
+            'header_title' => ['label' => 'Header title',       'type' => 'text',     'section' => 'Page Header', 'default' => 'PAHEWO - Pan African Holistic Endometriosis Wellness Organisation'],
+            'header_description' => ['label' => 'Header description', 'type' => 'textarea', 'section' => 'Page Header', 'default' => 'The reason this hotel exists. PAHEWO provides 24/7 medical wellness, sanctuary, and dignity for women and girls living with endometriosis - and every booking here keeps its doors open.'],
+            'header_image' => ['label' => 'Header image',       'type' => 'image',    'section' => 'Page Header', 'default' => 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1800&auto=format&fit=crop'],
+
+            // Section 1
+            'section_one_label' => ['label' => 'Label',       'type' => 'text',     'section' => 'Section 1', 'default' => 'The condition'],
+            'section_one_title' => ['label' => 'Title',       'type' => 'text',     'section' => 'Section 1', 'default' => 'What is endometriosis?'],
+            'section_one_body' => ['label' => 'Description', 'type' => 'textarea', 'section' => 'Section 1', 'default' => "Endometriosis is a chronic condition in which tissue similar to the lining of the uterus grows outside it - on the ovaries, fallopian tubes, bladder, bowel, and beyond. It causes severe, often debilitating pain, inflammation, and scarring that interrupt work, study, relationships, and daily life.\n\nIt affects roughly one in ten women and girls of reproductive age worldwide. In Uganda, where access to specialist care is limited, women frequently wait years for a diagnosis while their condition worsens. Management requires lifelong, multidisciplinary care - something most Ugandan women simply cannot access.\n\nEndometriosis is not a lifestyle inconvenience. It is a systemic disease with no cure, and the women living with it deserve more than silence."],
+            'section_one_image' => ['label' => 'Photo',       'type' => 'image',    'section' => 'Section 1', 'default' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop'],
+
+            // Section 2
+            'section_two_label' => ['label' => 'Label',       'type' => 'text',     'section' => 'Section 2', 'default' => 'The organisation'],
+            'section_two_title' => ['label' => 'Title',       'type' => 'text',     'section' => 'Section 2', 'default' => 'What PAHEWO does, every single day'],
+            'section_two_body' => ['label' => 'Description', 'type' => 'textarea', 'section' => 'Section 2', 'default' => "PAHEWO - the Pan African Holistic Endometriosis Wellness Organisation - was founded to do what the healthcare system in Uganda does not: provide consistent, dignified, 24/7 care for women and girls living with endometriosis.\n\nEvery day, PAHEWO operates a care line that any woman can call at any hour and reach a trained person, not a machine. It runs a physical wellness sanctuary where women in acute crisis can stay overnight - receiving heat therapy, pain medication, warm meals, counselling, and rest. It conducts school visits and community education programmes to reach girls before they spend years suffering in silence, believing their pain is normal.\n\nAt the heart of every programme is a single principle: a woman's account of her own body is the starting point of care, not something to be questioned or minimised."],
+            'section_two_image' => ['label' => 'Photo',       'type' => 'image',    'section' => 'Section 2', 'default' => 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=1200&auto=format&fit=crop'],
+
+            // Section 3
+            'section_three_label' => ['label' => 'Label',       'type' => 'text',     'section' => 'Section 3', 'default' => 'The partnership'],
+            'section_three_title' => ['label' => 'Title',       'type' => 'text',     'section' => 'Section 3', 'default' => 'This hotel is PAHEWO\'s commercial engine'],
+            'section_three_body' => ['label' => 'Description', 'type' => 'textarea', 'section' => 'Section 3', 'default' => "Endo Wellness Accommodation exists because PAHEWO needed a sustainable, dignified income stream - one that did not depend on the unpredictability of grants or the goodwill of donors alone. The hotel is that engine.\n\nFifteen percent of every booking is structurally committed to PAHEWO before any other expense is considered. Not as charity. Not as a marketing message. As a structural allocation that is built into the pricing of every room. When you stay here, you are not making a donation - you are participating in a model where quality hospitality and meaningful care are the same transaction.\n\nThe women and girls who benefit from PAHEWO's sanctuary, care line, and education programmes do not know your name. But the warmth they receive, the medicine that reaches them, and the person who answers the phone at 2 a.m. - all of that is connected, in a small but real way, to the night you chose to stay with purpose."],
+            'section_three_image' => ['label' => 'Photo',       'type' => 'image',    'section' => 'Section 3', 'default' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1200&auto=format&fit=crop'],
+
         ],
     ],
     'experiences' => [
@@ -175,70 +183,70 @@ return [
         'name' => 'Privacy Policy',
         'route' => 'privacy',
         'fields' => [
-            'header_label'       => ['label' => 'Header label',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Legal'],
-            'header_title'       => ['label' => 'Header title',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Privacy Policy'],
+            'header_label' => ['label' => 'Header label',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Legal'],
+            'header_title' => ['label' => 'Header title',       'type' => 'text',     'section' => 'Page Header', 'default' => 'Privacy Policy'],
             'header_description' => ['label' => 'Header description', 'type' => 'textarea', 'section' => 'Page Header', 'default' => 'How we collect, use, and protect your personal information when you interact with Endo Wellness Accommodation.'],
-            'last_updated'       => ['label' => 'Last updated date',  'type' => 'text',     'section' => 'Page Header', 'default' => 'July 2026'],
+            'last_updated' => ['label' => 'Last updated date',  'type' => 'text',     'section' => 'Page Header', 'default' => 'July 2026'],
 
             'intro_body' => [
-                'label'   => 'Introduction',
-                'type'    => 'textarea',
+                'label' => 'Introduction',
+                'type' => 'textarea',
                 'section' => 'Introduction',
                 'default' => "Endo Wellness Accommodation (\"we\", \"us\", or \"our\") is a boutique hotel based in Kampala, Uganda, operating in partnership with the Pan African Holistic Endometriosis Wellness Organisation (PAHEWO). We are committed to protecting your personal data and handling it responsibly in accordance with the EU General Data Protection Regulation (GDPR), the Uganda Data Protection and Privacy Act 2019, and other applicable privacy laws.\n\nThis Privacy Policy explains what personal data we collect, why we collect it, how we use it, and the rights you have over it. It applies to all visitors to our website, guests, and anyone who contacts us or submits a booking inquiry or donation pledge.",
             ],
 
             'data_collected_body' => [
-                'label'   => 'What data we collect',
-                'type'    => 'textarea',
+                'label' => 'What data we collect',
+                'type' => 'textarea',
                 'section' => 'What Data We Collect',
                 'default' => "We collect personal data only when you voluntarily provide it to us. This includes:\n\n• Booking inquiries: full name, email address, phone number, arrival and departure dates, number of guests, and any additional information you choose to share.\n• Donation pledges: full name, email address, donation amount, and payment preference.\n• Contact form submissions: name, email, and your message.\n• Automatically collected data: IP address, browser type, pages visited, and time spent on the site (via server logs and, where consented, analytics cookies).\n\nWe do not collect sensitive personal data (such as health information) unless you voluntarily share it in the context of a specific inquiry.",
             ],
 
             'data_use_body' => [
-                'label'   => 'How we use your data',
-                'type'    => 'textarea',
+                'label' => 'How we use your data',
+                'type' => 'textarea',
                 'section' => 'How We Use Your Data',
                 'default' => "We use your personal data to:\n\n• Respond to and process your booking inquiries and reservation requests.\n• Process and acknowledge donation pledges and follow up to complete the gift securely.\n• Communicate with you about your stay, including confirmations and pre-arrival information.\n• Improve our website and services using aggregated, anonymised analytics data.\n• Comply with our legal obligations under Ugandan and applicable international law.\n\nWe will never sell your personal data to third parties. We will never use your data for unsolicited marketing without your explicit consent.",
             ],
 
             'legal_basis_body' => [
-                'label'   => 'Legal basis for processing',
-                'type'    => 'textarea',
+                'label' => 'Legal basis for processing',
+                'type' => 'textarea',
                 'section' => 'Legal Basis for Processing',
                 'default' => "Under the GDPR, we process your personal data on the following legal bases:\n\n• Contractual necessity: processing required to respond to your booking inquiry or fulfil a service you have requested.\n• Legitimate interests: improving our website, preventing fraud, and ensuring the security of our systems.\n• Legal obligation: complying with Ugandan law and applicable international regulations.\n• Consent: where you have explicitly agreed to optional cookies or marketing communications. You may withdraw consent at any time.",
             ],
 
             'cookies_body' => [
-                'label'   => 'Cookies',
-                'type'    => 'textarea',
+                'label' => 'Cookies',
+                'type' => 'textarea',
                 'section' => 'Cookies',
                 'default' => "Our website uses the following types of cookies:\n\n• Essential cookies: required for the website to function correctly (session management, CSRF protection). These cannot be disabled.\n• Analytics cookies (optional, consent required): help us understand how visitors use the site so we can improve it. These are only activated if you click \"Accept All\" in the cookie notice.\n\nYou can manage your cookie preferences at any time by clicking \"Decline\" in the cookie notice or clearing your browser's local storage. Declining analytics cookies does not affect your ability to use the website.",
             ],
 
             'third_parties_body' => [
-                'label'   => 'Third parties',
-                'type'    => 'textarea',
+                'label' => 'Third parties',
+                'type' => 'textarea',
                 'section' => 'Third Parties',
                 'default' => "We may share your data with the following trusted third parties, solely to deliver our services:\n\n• Email service providers: to send booking confirmations and inquiry responses (data is not stored beyond transmission).\n• Hosting and infrastructure providers: servers on which the website and its data are stored, subject to appropriate data processing agreements.\n• PAHEWO: where a donation pledge is made, basic details (name and amount) are shared with PAHEWO to acknowledge your contribution.\n\nAll third-party providers are contractually bound to process your data only as instructed by us and in accordance with applicable privacy law. We do not transfer personal data outside Uganda or the European Economic Area without appropriate safeguards in place.",
             ],
 
             'retention_body' => [
-                'label'   => 'Data retention',
-                'type'    => 'textarea',
+                'label' => 'Data retention',
+                'type' => 'textarea',
                 'section' => 'Data Retention',
                 'default' => "We retain your personal data only for as long as necessary to fulfil the purpose for which it was collected:\n\n• Booking inquiry data is retained for 24 months after your inquiry date to allow for follow-up and to improve our services.\n• Donation pledge records are retained for 7 years to comply with financial and audit obligations.\n• Contact form messages are retained for 12 months.\n• Server log data is automatically deleted after 90 days.\n\nAfter the applicable retention period, your data is securely deleted or anonymised.",
             ],
 
             'rights_body' => [
-                'label'   => 'Your rights',
-                'type'    => 'textarea',
+                'label' => 'Your rights',
+                'type' => 'textarea',
                 'section' => 'Your Rights',
                 'default' => "Under the GDPR and the Uganda Data Protection and Privacy Act, you have the following rights:\n\n• Right of access: you may request a copy of the personal data we hold about you.\n• Right to rectification: you may ask us to correct inaccurate or incomplete data.\n• Right to erasure: you may request that we delete your personal data, subject to legal obligations.\n• Right to restriction: you may ask us to limit how we process your data in certain circumstances.\n• Right to data portability: you may request your data in a structured, machine-readable format.\n• Right to object: you may object to processing based on legitimate interests.\n• Right to withdraw consent: where processing is based on consent, you may withdraw it at any time without affecting the lawfulness of prior processing.\n\nTo exercise any of these rights, please contact us using the details below. We will respond within 30 days.",
             ],
 
             'contact_body' => [
-                'label'   => 'Contact & complaints',
-                'type'    => 'textarea',
+                'label' => 'Contact & complaints',
+                'type' => 'textarea',
                 'section' => 'Contact & Complaints',
                 'default' => "If you have any questions about this Privacy Policy or wish to exercise your data rights, please contact us:\n\nEndo Wellness Accommodation\nKampala, Uganda\nEmail: privacy@endowellness.ug\n\nIf you are based in the European Union and believe we have not handled your data correctly, you have the right to lodge a complaint with your local data protection authority. A list of EU supervisory authorities is available at: https://edpb.europa.eu/about-edpb/board/members_en",
             ],

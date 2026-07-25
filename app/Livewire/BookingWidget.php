@@ -42,7 +42,7 @@ class BookingWidget extends Component
         $this->room = $room;
         $this->extraFields = new HoneypotData;
         $this->check_in = now()->addDay()->toDateString();
-        $this->check_out = now()->addDays(3)->toDateString();
+        $this->check_out = now()->addDays(2)->toDateString();
     }
 
     public function nights(): int
