@@ -34,6 +34,12 @@ class SettingTest extends TestCase
             'facebook' => 'https://facebook.com/staywithpurpose',
             'instagram' => 'https://instagram.com/staywithpurpose',
             'linkedin' => 'https://linkedin.com/company/staywithpurpose',
+            'footer_brand_name' => 'Endo Wellness Accommodation',
+            'footer_description' => 'A welcoming place where every stay supports endometriosis care.',
+            'footer_partner_text' => 'PAHEWO',
+            'footer_partner_url' => 'https://www.pahewo.org',
+            'google_reviews_url' => 'https://www.google.com/search?q=Endo+Wellness+Accommodation',
+            'footer_wellness_message' => 'Our wellness support line is available every hour of every day.',
         ]);
 
         $response->assertRedirect(route('dashboard.settings.edit'));
@@ -44,6 +50,8 @@ class SettingTest extends TestCase
             'phone' => '+256 712 345 678',
             'email' => 'contact@staywithpurpose.ug',
             'address' => 'Plot 12, Kololo, Kampala, Uganda',
+            'footer_brand_name' => 'Endo Wellness Accommodation',
+            'footer_wellness_message' => 'Our wellness support line is available every hour of every day.',
         ]);
 
         $this->assertSame('https://facebook.com/staywithpurpose', Setting::instance()->facebook);

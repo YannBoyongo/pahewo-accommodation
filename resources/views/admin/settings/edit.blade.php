@@ -23,6 +23,54 @@
         </div>
 
         <div class="mt-8 border-t border-chocolate-100 pt-8">
+            <p class="section-label">Website Footer</p>
+            <p class="mt-2 text-sm text-neutral-500">Content shown in the footer across all public pages.</p>
+
+            <div class="mt-6">
+                <x-input-label for="footer_brand_name" value="Brand name" />
+                <x-text-input id="footer_brand_name" name="footer_brand_name" class="input-luxe mt-1"
+                    :value="old('footer_brand_name', $setting->footer_brand_name)" required />
+                <x-input-error :messages="$errors->get('footer_brand_name')" class="mt-2" />
+            </div>
+
+            <div class="mt-6">
+                <x-input-label for="footer_description" value="Description" />
+                <textarea id="footer_description" name="footer_description" rows="5" class="input-luxe mt-1" required>{{ old('footer_description', $setting->footer_description) }}</textarea>
+                <x-input-error :messages="$errors->get('footer_description')" class="mt-2" />
+            </div>
+
+            <div class="mt-6 grid gap-6 lg:grid-cols-2">
+                <div>
+                    <x-input-label for="footer_partner_text" value="Partnership link text" />
+                    <x-text-input id="footer_partner_text" name="footer_partner_text" class="input-luxe mt-1"
+                        :value="old('footer_partner_text', $setting->footer_partner_text)" required />
+                    <x-input-error :messages="$errors->get('footer_partner_text')" class="mt-2" />
+                </div>
+                <div>
+                    <x-input-label for="footer_partner_url" value="Partnership URL" />
+                    <x-text-input id="footer_partner_url" name="footer_partner_url" type="url" class="input-luxe mt-1"
+                        :value="old('footer_partner_url', $setting->footer_partner_url)" required />
+                    <x-input-error :messages="$errors->get('footer_partner_url')" class="mt-2" />
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <x-input-label for="google_reviews_url" value="Google Reviews URL" />
+                <x-text-input id="google_reviews_url" name="google_reviews_url" type="url" class="input-luxe mt-1"
+                    :value="old('google_reviews_url', $setting->google_reviews_url)"
+                    placeholder="https://www.google.com/search?q=..." />
+                <x-input-error :messages="$errors->get('google_reviews_url')" class="mt-2" />
+            </div>
+
+            <div class="mt-6">
+                <x-input-label for="footer_wellness_message" value="Wellness message" />
+                <textarea id="footer_wellness_message" name="footer_wellness_message" rows="4" class="input-luxe mt-1" required>{{ old('footer_wellness_message', $setting->footer_wellness_message) }}</textarea>
+                <p class="mt-1 text-xs text-neutral-400">Shown in the highlighted box below the footer contact details.</p>
+                <x-input-error :messages="$errors->get('footer_wellness_message')" class="mt-2" />
+            </div>
+        </div>
+
+        <div class="mt-8 border-t border-chocolate-100 pt-8">
             <p class="section-label">Location &amp; Map</p>
             <p class="mt-2 text-sm text-neutral-500">
                 Paste a Google Maps <strong>embed iframe</strong> below to show a custom map on the website.

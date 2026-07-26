@@ -86,18 +86,17 @@
             <div class="lg:col-span-2">
                 <div class="flex items-center gap-3">
                     <x-site-logo class="h-12 w-auto max-w-[130px] object-contain" />
-                    <span class="text-sm font-semibold uppercase tracking-widest">Stay with Purpose</span>
+                    <span class="text-sm font-semibold uppercase tracking-widest">{{ $siteSettings->footer_brand_name }}</span>
                 </div>
                 <p class="mt-5 max-w-md text-sm leading-relaxed text-white/70">
-                    A boutique hotel in Kampala, Uganda where every booking funds 24/7 medical wellness,
-                    sanctuary, and dignity for women and girls living with endometriosis — a condition
-                    that never clocks out, met by care that never closes.
+                    {{ $siteSettings->footer_description }}
                 </p>
                 <p class="mt-5 text-sm text-gold-400">
-                    In partnership with <a href="https://www.pahewo.org" target="_blank" rel="noopener" class="underline underline-offset-4 hover:text-gold-300">PAHEWO — www.pahewo.org</a>
+                    In partnership with <a href="{{ $siteSettings->footer_partner_url }}" target="_blank" rel="noopener" class="underline underline-offset-4 hover:text-gold-300">{{ $siteSettings->footer_partner_text }}</a>
                 </p>
 
-                <a href="https://www.google.com/search?q=Endo+Wellness+Accommodation+Kampala" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:bg-white/10">
+                @if ($siteSettings->google_reviews_url)
+                <a href="{{ $siteSettings->google_reviews_url }}" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 transition hover:bg-white/10">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="h-6 w-6 shrink-0" aria-hidden="true">
                         <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                         <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
@@ -115,6 +114,7 @@
                         @endfor
                     </div>
                 </a>
+                @endif
             </div>
             <div>
                 <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-500">Explore</h3>
@@ -128,8 +128,7 @@
                 <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-500">Contact</h3>
                 <x-site-contact :settings="$siteSettings" />
                 <p class="mt-5 rounded-xl bg-white/5 p-4 text-xs leading-relaxed text-white/60">
-                    Endometriosis pain doesn't keep business hours. Our wellness line — funded by your
-                    stay — is answered every hour of every day.
+                    {{ $siteSettings->footer_wellness_message }}
                 </p>
             </div>
         </div>
