@@ -1,54 +1,12 @@
-<div x-data="{ open: false }" class="fixed bottom-6 right-6 z-50">
-    <div x-show="open" x-cloak x-transition
-        class="mb-4 flex h-[28rem] w-[22rem] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-chocolate-100">
-        <div class="flex items-center justify-between bg-chocolate-900 px-5 py-4">
-            <div>
-                <p class="text-sm font-semibold text-white">24/7 Support</p>
-                <p class="flex items-center gap-1.5 text-xs text-gold-400">
-                    <span class="relative flex h-2 w-2">
-                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-                    </span>
-                    Always online — like our care
-                </p>
-            </div>
-            <button @click="open = false" class="text-white/70 transition hover:text-white" aria-label="Close chat">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
-            </button>
-        </div>
-
-        <div class="flex-1 space-y-3 overflow-y-auto bg-beige p-4" id="chat-scroll">
-            @foreach ($messages as $message)
-                <div @class(['flex', 'justify-end' => $message['from'] === 'guest'])>
-                    <div @class([
-                        'max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed',
-                        'bg-white text-neutral-700 shadow-sm' => $message['from'] === 'team',
-                        'bg-chocolate-700 text-white' => $message['from'] === 'guest',
-                    ])>
-                        {{ $message['text'] }}
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <div class="border-t border-chocolate-100 bg-white p-3">
-            <form wire:submit="send" class="flex items-center gap-2">
-                <input type="text" wire:model="draft" placeholder="Write a message…"
-                    class="flex-1 input-luxe">
-                <button type="submit" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-chocolate-700 text-white transition hover:bg-chocolate-800" aria-label="Send message">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"/></svg>
-                </button>
-            </form>
-            <p class="mt-2 text-center text-[10px] text-neutral-400">
-                Urgent wellness support? Call the 24/7 line: +256 800 246 810
-            </p>
-        </div>
-    </div>
-
-    <button @click="open = !open"
-        class="ml-auto flex h-14 w-14 items-center justify-center rounded-full bg-chocolate-700 text-white shadow-xl shadow-chocolate-900/30 transition hover:scale-105 hover:bg-chocolate-800"
-        aria-label="Open 24/7 support chat">
-        <svg x-show="!open" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
-        <svg x-show="open" x-cloak class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18 18 6M6 6l12 12"/></svg>
-    </button>
-</div>
+<a
+    href="{{ $whatsappUrl }}"
+    target="_blank"
+    rel="noopener"
+    class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl shadow-green-900/25 transition hover:scale-105 hover:bg-[#1ebe5d]"
+    aria-label="Chat with us on WhatsApp"
+    title="Chat with us on WhatsApp"
+>
+    <svg class="h-7 w-7" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <path d="M16.04 3C9.4 3 4 8.36 4 14.96c0 2.34.69 4.62 1.99 6.56L4.1 28.4l7.08-1.85a12.1 12.1 0 0 0 4.85.99h.01C22.68 27.54 28 22.18 28 15.58 28 8.98 22.68 3 16.04 3Zm0 22.52h-.01a10 10 0 0 1-4.27-.94l-.31-.14-4.2 1.1 1.12-4.08-.2-.33a9.92 9.92 0 0 1-1.53-5.28c0-5.47 4.47-9.92 9.97-9.92 5.49 0 9.94 4.45 9.94 9.92 0 5.46-4.46 9.67-9.95 9.67Zm5.46-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48a9 9 0 0 1-1.66-2.05c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.71.23 1.36.19 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+    </svg>
+</a>
