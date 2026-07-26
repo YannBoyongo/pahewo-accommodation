@@ -21,6 +21,7 @@ class SettingController extends Controller
     {
         $validated = $request->validate([
             'phone' => ['required', 'string', 'max:50'],
+            'whatsapp_number' => ['required', 'string', 'max:50'],
             'email' => ['required', 'email', 'max:255'],
             'address' => ['required', 'string', 'max:1000'],
             'map_embed' => ['nullable', 'string', 'max:10000'],

@@ -29,6 +29,7 @@ class SettingTest extends TestCase
 
         $response = $this->actingAs($user)->put(route('dashboard.settings.update'), [
             'phone' => '+256 712 345 678',
+            'whatsapp_number' => '+256 772 345 678',
             'email' => 'contact@staywithpurpose.ug',
             'address' => 'Plot 12, Kololo, Kampala, Uganda',
             'facebook' => 'https://facebook.com/staywithpurpose',
@@ -48,6 +49,7 @@ class SettingTest extends TestCase
         $this->assertDatabaseHas('settings', [
             'id' => 1,
             'phone' => '+256 712 345 678',
+            'whatsapp_number' => '+256 772 345 678',
             'email' => 'contact@staywithpurpose.ug',
             'address' => 'Plot 12, Kololo, Kampala, Uganda',
             'footer_brand_name' => 'Endo Wellness Accommodation',

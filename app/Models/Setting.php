@@ -8,6 +8,7 @@ class Setting extends Model
 {
     protected $fillable = [
         'phone',
+        'whatsapp_number',
         'email',
         'address',
         'map_embed',
@@ -29,6 +30,7 @@ class Setting extends Model
             ['id' => 1],
             [
                 'phone' => '+256 700 000 000',
+                'whatsapp_number' => '+256 700 000 000',
                 'email' => 'hello@staywithpurpose.ug',
                 'address' => 'Kampala, Uganda',
                 'footer_brand_name' => 'Stay with Purpose',

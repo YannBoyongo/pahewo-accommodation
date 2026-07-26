@@ -10,6 +10,13 @@
                 <x-input-error :messages="$errors->get('phone')" class="mt-2" />
             </div>
             <div>
+                <x-input-label for="whatsapp_number" value="WhatsApp number" />
+                <x-text-input id="whatsapp_number" name="whatsapp_number" type="tel" class="input-luxe mt-1"
+                    :value="old('whatsapp_number', $setting->whatsapp_number)" placeholder="+256 700 000 000" required />
+                <p class="mt-1 text-xs text-neutral-400">Include the country code. This number is used by the floating WhatsApp button.</p>
+                <x-input-error :messages="$errors->get('whatsapp_number')" class="mt-2" />
+            </div>
+            <div>
                 <x-input-label for="email" value="Email" />
                 <x-text-input id="email" name="email" type="email" class="input-luxe mt-1" :value="old('email', $setting->email)" required />
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
