@@ -50,9 +50,6 @@
                 @if ($room->size_sqm)<span>·</span><span>{{ $room->size_sqm }} m²</span>@endif
                 @if ($room->bed_setup)<span>·</span><span>{{ $room->bed_setup }}</span>@endif
             </div>
-            <p class="mt-4 text-xs font-medium text-gold-600">
-                Funds {{ \App\Support\Currency::format($room->price_per_night * \App\Models\Booking::IMPACT_SHARE) }}/night of 24/7 endometriosis care
-            </p>
         </div>
     </a>
 </article>

@@ -115,7 +115,8 @@
                 <h3 class="text-xs font-semibold uppercase tracking-[0.25em] text-gold-500">Explore</h3>
                 <ul class="mt-5 space-y-3 text-sm text-white/70">
                     <li><a href="{{ route('rooms.index') }}" class="transition hover:text-gold-400">Rooms &amp; Suites</a></li>
-                    <li><a href="{{ route('experiences.index') }}" class="transition hover:text-gold-400">Cultural Experiences</a></li>
+                    <li><a href="{{ route('dining') }}" class="transition hover:text-gold-400">Dining</a></li>
+                    <li><a href="{{ route('conference-meeting') }}" class="transition hover:text-gold-400">Meeting &amp; Events</a></li>
                     <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">About PAHEWO</a></li>
                 </ul>
             </div>
