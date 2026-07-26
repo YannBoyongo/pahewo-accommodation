@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\DonationController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\HeroSectionController;
 use App\Http\Controllers\Admin\PageController;
@@ -33,10 +32,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::patch('bookings/{booking}/approve', [BookingController::class, 'approve'])
             ->name('bookings.approve')
             ->scopeBindings();
-
-        Route::resource('donations', DonationController::class)
-            ->only(['index', 'show', 'edit', 'update', 'destroy'])
-            ->scoped(['donation' => 'id']);
 
         Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');

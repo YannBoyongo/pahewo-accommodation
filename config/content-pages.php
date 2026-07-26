@@ -154,22 +154,6 @@ return [
             'cta_description' => ['label' => 'CTA description', 'type' => 'textarea', 'section' => 'Bottom Call to Action', 'default' => 'Visit the PAHEWO sanctuary, meet the care team, and see exactly what your booking funds.'],
         ],
     ],
-    'donate' => [
-        'name' => 'Donate Page',
-        'route' => 'donate.index',
-        'fields' => [
-            'header_label' => ['label' => 'Header label', 'type' => 'text', 'section' => 'Page Header', 'default' => 'Donate'],
-            'header_title' => ['label' => 'Header title', 'type' => 'text', 'section' => 'Page Header', 'default' => 'Fund a Night of Sanctuary, Directly'],
-            'header_description' => ['label' => 'Header description', 'type' => 'textarea', 'section' => 'Page Header', 'default' => "Your donation goes to PAHEWO's programs, including care teams, medicine, warm meals, and the support line."],
-            'header_image' => ['label' => 'Header image', 'type' => 'image', 'section' => 'Page Header', 'default' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1800&auto=format&fit=crop'],
-            'funding_label' => ['label' => 'Funding list label', 'type' => 'text', 'section' => 'Funding Information', 'default' => 'What your gift funds'],
-            'amount_25_description' => ['label' => 'UGX 25,000 description', 'type' => 'textarea', 'section' => 'Funding Information', 'default' => 'A full day of heat-therapy supplies and pain relief at the sanctuary.'],
-            'amount_50_description' => ['label' => 'UGX 50,000 description', 'type' => 'textarea', 'section' => 'Funding Information', 'default' => 'One overnight sanctuary stay with a bed, warm meals, and support.'],
-            'amount_100_description' => ['label' => 'UGX 100,000 description', 'type' => 'textarea', 'section' => 'Funding Information', 'default' => 'A month of care-line coverage for one woman, including follow-ups.'],
-            'amount_250_description' => ['label' => 'UGX 250,000 description', 'type' => 'textarea', 'section' => 'Funding Information', 'default' => 'A school advocacy visit reaching girls with accurate information.'],
-            'pledge_note' => ['label' => 'Pledge information note', 'type' => 'textarea', 'section' => 'Funding Information', 'default' => 'Donations are pledges recorded on this platform; our team will contact you to complete the transfer securely.'],
-        ],
-    ],
     'privacy' => [
         'name' => 'Privacy Policy',
         'route' => 'privacy',

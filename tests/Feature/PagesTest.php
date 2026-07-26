@@ -70,11 +70,4 @@ class PagesTest extends TestCase
             ->assertOk()
             ->assertSee('PAHEWO');
     }
-
-    public function test_donate_page_renders(): void
-    {
-        $this->get(route('donate.index'))
-            ->assertOk()
-            ->assertSee('Make a pledge');
-    }
 }

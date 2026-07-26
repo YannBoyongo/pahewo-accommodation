@@ -25,20 +25,11 @@ return new class extends Migration
             $table->decimal('impact_contribution', 14, 2)->default(0)->change();
         });
 
-        Schema::table('donations', function (Blueprint $table) {
-            $table->decimal('amount', 14, 2)->change();
-            $table->string('currency', 3)->default('UGX')->change();
-        });
-
         DB::table('rooms')->update(['price_per_night' => DB::raw('price_per_night * 1000')]);
         DB::table('experiences')->whereNotNull('price')->update(['price' => DB::raw('price * 1000')]);
         DB::table('bookings')->update([
             'total_price' => DB::raw('total_price * 1000'),
             'impact_contribution' => DB::raw('impact_contribution * 1000'),
-        ]);
-        DB::table('donations')->update([
-            'amount' => DB::raw('amount * 1000'),
-            'currency' => 'UGX',
         ]);
     }
 
@@ -53,11 +44,6 @@ return new class extends Migration
             'total_price' => DB::raw('total_price / 1000'),
             'impact_contribution' => DB::raw('impact_contribution / 1000'),
         ]);
-        DB::table('donations')->update([
-            'amount' => DB::raw('amount / 1000'),
-            'currency' => 'USD',
-        ]);
-
         Schema::table('rooms', function (Blueprint $table) {
             $table->decimal('price_per_night', 10, 2)->change();
         });
@@ -71,9 +57,5 @@ return new class extends Migration
             $table->decimal('impact_contribution', 10, 2)->default(0)->change();
         });
 
-        Schema::table('donations', function (Blueprint $table) {
-            $table->decimal('amount', 10, 2)->change();
-            $table->string('currency', 3)->default('USD')->change();
-        });
     }
 };

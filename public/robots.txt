@@ -7,6 +7,5 @@ Disallow: /login
 Disallow: /register
 Disallow: /profile
 Disallow: /book/thank-you
-Disallow: /donate/thank-you
 
 Sitemap: https://accommodation.pahewo.org/sitemap.xml

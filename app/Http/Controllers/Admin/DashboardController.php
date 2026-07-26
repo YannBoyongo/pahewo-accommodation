@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
-use App\Models\Donation;
 use App\Models\Experience;
 use App\Models\Partner;
 use App\Models\Room;
+use App\Models\Testimonial;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -19,13 +19,11 @@ class DashboardController extends Controller
                 'rooms' => Room::query()->count(),
                 'experiences' => Experience::query()->count(),
                 'partners' => Partner::query()->count(),
+                'testimonials' => Testimonial::query()->count(),
                 'pendingBookings' => Booking::query()->where('status', 'pending')->count(),
                 'totalBookings' => Booking::query()->count(),
-                'pledgedDonations' => Donation::query()->where('status', 'pledged')->count(),
-                'totalDonationAmount' => Donation::query()->sum('amount'),
             ],
             'recentBookings' => Booking::query()->with('room')->latest()->limit(5)->get(),
-            'recentDonations' => Donation::query()->latest()->limit(5)->get(),
         ]);
     }
 }

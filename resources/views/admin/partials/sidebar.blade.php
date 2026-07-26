@@ -9,7 +9,6 @@
 
     $operationsLinks = [
         ['route' => 'dashboard.bookings.index', 'label' => 'Bookings', 'icon' => 'bookings', 'patterns' => ['dashboard.bookings.*']],
-        ['route' => 'dashboard.donations.index', 'label' => 'Donations', 'icon' => 'donations', 'patterns' => ['dashboard.donations.*']],
     ];
 
     $systemLinks = [
@@ -43,9 +42,9 @@
         </div>
 
         <div>
-            <p class="mb-3 px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Content</p>
+            <p class="mb-3 px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Operations</p>
             <div class="space-y-1">
-                @foreach ($contentLinks as $link)
+                @foreach ($operationsLinks as $link)
                     <a
                         href="{{ route($link['route']) }}"
                         class="admin-sidebar-link {{ request()->routeIs($link['patterns']) ? 'admin-sidebar-link-active' : '' }}"
@@ -58,9 +57,9 @@
         </div>
 
         <div>
-            <p class="mb-3 px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Operations</p>
+            <p class="mb-3 px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/40">Content</p>
             <div class="space-y-1">
-                @foreach ($operationsLinks as $link)
+                @foreach ($contentLinks as $link)
                     <a
                         href="{{ route($link['route']) }}"
                         class="admin-sidebar-link {{ request()->routeIs($link['patterns']) ? 'admin-sidebar-link-active' : '' }}"

@@ -32,8 +32,6 @@ class AppServiceProvider extends ServiceProvider
             'pages.contact' => 'contact',
             'pages.about-pahewo' => 'about-pahewo',
             'pages.experiences' => 'experiences',
-
-            'pages.donate' => 'donate',
             'pages.privacy' => 'privacy',
         ];
 

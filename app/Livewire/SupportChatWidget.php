@@ -44,11 +44,7 @@ class SupportChatWidget extends Component
             return "For wellness support, the PAHEWO 24/7 care line is +256 800 246 810 — a person answers at any hour, including right now. If it's urgent, please call rather than message. You are not alone.";
         }
 
-        if (str_contains($text, 'donat') || str_contains($text, 'support') || str_contains($text, 'give')) {
-            return 'Thank you for wanting to give. Visit our Donate page to fund nights of sanctuary care directly — 100% of donations go to PAHEWO programs.';
-        }
-
-        return "Thank you for your message — a member of our team will reply shortly. For anything urgent, call reservations on +256 700 000 000 or the 24/7 wellness line on +256 800 246 810.";
+        return 'Thank you for your message — a member of our team will reply shortly. For anything urgent, call reservations on +256 700 000 000 or the 24/7 wellness line on +256 800 246 810.';
     }
 
     public function render()

@@ -122,7 +122,6 @@
                     <li><a href="{{ route('rooms.index') }}" class="transition hover:text-gold-400">Rooms &amp; Suites</a></li>
                     <li><a href="{{ route('experiences.index') }}" class="transition hover:text-gold-400">Cultural Experiences</a></li>
                     <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">About PAHEWO</a></li>
-                    <li><a href="{{ route('donate.index') }}" class="transition hover:text-gold-400">Donate</a></li>
                 </ul>
             </div>
             <div>

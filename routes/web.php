@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\BookingInquiryController;
-use App\Http\Controllers\DonationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitemapController;
@@ -53,12 +52,6 @@ Route::view('/about-pahewo', 'pages.about-pahewo')->name('about-pahewo');
 Route::view('/privacy', 'pages.privacy')->name('privacy');
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
-
-Route::get('/donate', [DonationController::class, 'index'])->name('donate.index');
-Route::post('/donate', [DonationController::class, 'store'])
-    ->middleware(ProtectAgainstSpam::class)
-    ->name('donate.store');
-Route::get('/donate/thank-you', [DonationController::class, 'thanks'])->name('donate.thanks');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
