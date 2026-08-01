@@ -21,8 +21,8 @@
 
 <div class="mt-6 grid gap-6 lg:grid-cols-3">
     <div>
-        <x-input-label for="price_per_night" value="Price per night (UGX)" />
-        <x-text-input id="price_per_night" name="price_per_night" type="number" step="1" class="input-luxe mt-1" :value="old('price_per_night', $room?->price_per_night)" required />
+        <x-input-label for="price_per_night" value="Price per night (USD)" />
+        <x-text-input id="price_per_night" name="price_per_night" type="number" step="1" min="0" class="input-luxe mt-1" :value="old('price_per_night', $room?->price_per_night)" required />
         <x-input-error :messages="$errors->get('price_per_night')" class="mt-2" />
     </div>
     <div>

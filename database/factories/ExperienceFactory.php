@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Experience;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Experience>
+ * @extends Factory<Experience>
  */
 class ExperienceFactory extends Factory
 {
@@ -23,7 +24,7 @@ class ExperienceFactory extends Factory
             'category' => $this->faker->randomElement(['Culture', 'Wellness', 'Adventure', 'Community']),
             'description' => $this->faker->paragraphs(2, true),
             'duration' => $this->faker->randomElement(['Half day', 'Full day', '2 hours', '3 hours']),
-            'price' => $this->faker->numberBetween(20000, 150000),
+            'price' => $this->faker->numberBetween(20, 150),
             'image_url' => null,
             'is_featured' => false,
             'sort_order' => 0,

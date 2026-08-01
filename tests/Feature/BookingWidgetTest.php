@@ -15,14 +15,14 @@ class BookingWidgetTest extends TestCase
 
     public function test_guest_can_create_a_booking(): void
     {
-        $room = Room::factory()->create(['price_per_night' => 200000, 'capacity' => 2]);
+        $room = Room::factory()->create(['price_per_night' => 200, 'capacity' => 2]);
 
         Livewire::test(BookingWidget::class, ['room' => $room])
             ->set('check_in', now()->addDays(5)->toDateString())
             ->set('check_out', now()->addDays(8)->toDateString())
             ->set('guests', 2)
             ->set('guest_name', 'Amina Okello')
-            ->set('guest_email', 'amina@example.com')
+            ->set('guest_email', 'amina@gmail.com')
             ->call('book')
             ->assertHasNoErrors();
 
@@ -30,8 +30,8 @@ class BookingWidgetTest extends TestCase
 
         $this->assertSame($room->id, $booking->room_id);
         $this->assertSame(3, $booking->nights);
-        $this->assertSame('600000.00', $booking->total_price);
-        $this->assertSame('90000.00', $booking->impact_contribution);
+        $this->assertSame('600.00', $booking->total_price);
+        $this->assertSame('90.00', $booking->impact_contribution);
         $this->assertSame('pending', $booking->status);
         $this->assertNotEmpty($booking->reference);
     }

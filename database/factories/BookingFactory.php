@@ -7,7 +7,7 @@ use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Booking>
+ * @extends Factory<Booking>
  */
 class BookingFactory extends Factory
 {
@@ -19,7 +19,7 @@ class BookingFactory extends Factory
         $checkIn = $this->faker->dateTimeBetween('+1 week', '+2 months');
         $nights = $this->faker->numberBetween(1, 7);
         $checkOut = (clone $checkIn)->modify("+{$nights} days");
-        $pricePerNight = $this->faker->numberBetween(80000, 450000);
+        $pricePerNight = $this->faker->numberBetween(80, 450);
         $total = round($pricePerNight * $nights, 2);
 
         return [

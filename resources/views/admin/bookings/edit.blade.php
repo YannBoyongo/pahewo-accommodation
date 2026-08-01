@@ -58,12 +58,12 @@
                 <x-input-error :messages="$errors->get('nights')" class="mt-2" />
             </div>
             <div>
-                <x-input-label for="total_price" value="Total price (UGX)" />
+                <x-input-label for="total_price" value="Total price (USD)" />
                 <x-text-input id="total_price" name="total_price" type="number" step="1" class="input-luxe mt-1" :value="old('total_price', $booking->total_price)" required />
                 <x-input-error :messages="$errors->get('total_price')" class="mt-2" />
             </div>
             <div>
-                <x-input-label for="impact_contribution" value="Impact contribution (UGX)" />
+                <x-input-label for="impact_contribution" value="Impact contribution (USD)" />
                 <x-text-input id="impact_contribution" name="impact_contribution" type="number" step="1" class="input-luxe mt-1" :value="old('impact_contribution', $booking->impact_contribution)" required />
                 <x-input-error :messages="$errors->get('impact_contribution')" class="mt-2" />
             </div>

@@ -26,7 +26,7 @@
         <x-input-error :messages="$errors->get('duration')" class="mt-2" />
     </div>
     <div>
-        <x-input-label for="price" value="Price (UGX)" />
+        <x-input-label for="price" value="Price (USD)" />
         <x-text-input id="price" name="price" type="number" step="1" class="input-luxe mt-1" :value="old('price', $experience?->price)" />
         <x-input-error :messages="$errors->get('price')" class="mt-2" />
     </div>

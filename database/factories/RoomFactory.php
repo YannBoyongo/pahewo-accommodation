@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Room>
+ * @extends Factory<Room>
  */
 class RoomFactory extends Factory
 {
@@ -22,7 +23,7 @@ class RoomFactory extends Factory
             'slug' => Str::slug($name),
             'tagline' => $this->faker->sentence(6),
             'description' => $this->faker->paragraphs(2, true),
-            'price_per_night' => $this->faker->numberBetween(80000, 450000),
+            'price_per_night' => $this->faker->numberBetween(80, 450),
             'capacity' => $this->faker->numberBetween(1, 4),
             'size_sqm' => $this->faker->numberBetween(24, 90),
             'bed_setup' => $this->faker->randomElement(['1 King Bed', '2 Queen Beds', '1 Queen Bed']),

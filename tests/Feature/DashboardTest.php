@@ -45,7 +45,7 @@ class DashboardTest extends TestCase
         $response = $this->actingAs($user)->post(route('dashboard.rooms.store'), [
             'name' => 'Test Suite',
             'description' => 'A lovely test room for the admin panel.',
-            'price_per_night' => 199000,
+            'price_per_night' => 199,
             'capacity' => 2,
             'amenities' => 'Wi-Fi, Breakfast',
             'is_featured' => '1',
