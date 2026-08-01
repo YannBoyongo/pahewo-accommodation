@@ -16,7 +16,6 @@ class PagesTest extends TestCase
     public function test_home_page_renders_featured_content(): void
     {
         $room = Room::factory()->featured()->create();
-        $experience = Experience::factory()->featured()->create();
         $partner = Partner::factory()->create();
         $testimonial = Testimonial::factory()->create([
             'quote' => 'A beautifully peaceful stay with thoughtful, attentive service.',
@@ -25,11 +24,17 @@ class PagesTest extends TestCase
         $this->get(route('home'))
             ->assertOk()
             ->assertSee('Help Heal with Us')
-            ->assertSee('Check Availability')
-            ->assertSeeLivewire('hero-booking-bar')
-            ->assertSee($room->name)
-            ->assertSee($experience->name)
-            ->assertSee('Built Together, Not Alone')
+            ->assertSee('Book Now')
+            ->assertSee('Our Facilities')
+            ->assertSee('Accommodation')
+            ->assertSee('Comfortable rooms prepared for restful stays.')
+            ->assertSee('Shared Kitchen')
+            ->assertSee('A welcoming kitchen space to prepare simple meals during your stay.')
+            ->assertSee('Private Floor')
+            ->assertSee('A floor with 3 rooms for a large family or group — if available.')
+            ->assertDontSee('Explore All Rooms')
+            ->assertDontSee('Culinary Experiences')
+            ->assertSee('Trusted Partnerships')
             ->assertSee($partner->name)
             ->assertSee($testimonial->quote)
             ->assertSee('images/favicon.png');
@@ -62,6 +67,13 @@ class PagesTest extends TestCase
 
         $this->get(route('experiences.index'))->assertOk()->assertSee($experience->name);
         $this->get(route('experiences.show', $experience))->assertOk()->assertSee($experience->name);
+    }
+
+    public function test_our_story_page_renders(): void
+    {
+        $this->get(route('our-story'))
+            ->assertOk()
+            ->assertSee('Our Story');
     }
 
     public function test_about_pahewo_page_renders(): void

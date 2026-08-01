@@ -19,6 +19,18 @@
 </div>
 
 <div class="mt-6">
+    <x-input-label for="rating" value="Star rating" />
+    <select id="rating" name="rating" class="input-luxe mt-1" required>
+        @foreach (range(5, 1) as $stars)
+            <option value="{{ $stars }}" @selected((int) old('rating', $testimonial?->rating ?? 5) === $stars)>
+                {{ $stars }} {{ Str::plural('star', $stars) }}
+            </option>
+        @endforeach
+    </select>
+    <x-input-error :messages="$errors->get('rating')" class="mt-2" />
+</div>
+
+<div class="mt-6">
     <x-input-label for="sort_order" value="Display order" />
     <x-text-input id="sort_order" name="sort_order" type="number" min="0" class="input-luxe mt-1" :value="old('sort_order', $testimonial?->sort_order ?? 0)" required />
     <x-input-error :messages="$errors->get('sort_order')" class="mt-2" />

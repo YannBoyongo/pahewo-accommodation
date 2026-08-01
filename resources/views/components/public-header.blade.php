@@ -1,5 +1,5 @@
 {{-- Shared public header: terracotta topbar + white sticky nav --}}
-<div class="sticky top-0 z-50 shadow-sm" x-data="{ open: false }">
+<div class="sticky top-0 z-50 shadow-sm" x-data="{ open: false, aboutOpen: false }">
 
     {{-- Terracotta contact topbar --}}
     <div class="bg-terracotta-500">
@@ -30,16 +30,44 @@
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3 lg:px-10 lg:py-4">
 
             <a href="{{ route('home') }}" class="shrink-0 transition duration-300 hover:opacity-90">
-                <x-site-logo class="h-[4rem] w-auto max-w-[200px] object-contain sm:h-[4.5rem] sm:max-w-[230px] lg:h-20 lg:max-w-[260px]" />
+                <x-site-logo class="h-[5rem] w-auto max-w-[240px] object-contain sm:h-[5.5rem] sm:max-w-[280px] lg:h-24 lg:max-w-[320px]" />
             </a>
 
-            <nav class="hidden flex-1 items-center justify-center gap-3 xl:flex">
+            <nav class="hidden flex-1 items-center justify-center gap-5 xl:flex 2xl:gap-7">
                 <a href="{{ route('home') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('home')]) @if(request()->routeIs('home')) aria-current="page" @endif>Home</a>
-                <a href="{{ route('rooms.index') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('rooms.*')]) @if(request()->routeIs('rooms.*')) aria-current="page" @endif>Rooms</a>
-                <a href="{{ route('dining') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('dining')]) @if(request()->routeIs('dining')) aria-current="page" @endif>Dining</a>
+                <a href="{{ route('rooms.index') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('rooms.*')]) @if(request()->routeIs('rooms.*')) aria-current="page" @endif>Accommodation</a>
+                <a href="{{ route('dining') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('dining')]) @if(request()->routeIs('dining')) aria-current="page" @endif>Restaurant &amp; Cafe</a>
                 <a href="{{ route('conference-meeting') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('conference-meeting')]) @if(request()->routeIs('conference-meeting')) aria-current="page" @endif>Meeting &amp; Events</a>
                 <a href="{{ route('contact') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('contact')]) @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a>
-                <a href="{{ route('about-pahewo') }}" @class(['public-nav-link', 'public-nav-link-active' => request()->routeIs('about-pahewo')]) @if(request()->routeIs('about-pahewo')) aria-current="page" @endif>About</a>
+
+                <div class="relative" @mouseenter="aboutOpen = true" @mouseleave="aboutOpen = false">
+                    <button
+                        type="button"
+                        @click="aboutOpen = !aboutOpen"
+                        @class(['public-nav-link inline-flex items-center gap-1.5', 'public-nav-link-active' => request()->routeIs('our-story', 'about-pahewo')])
+                        :aria-expanded="aboutOpen.toString()"
+                        aria-haspopup="true"
+                    >
+                        About
+                        <svg class="h-3.5 w-3.5 transition" :class="aboutOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                    </button>
+
+                    <div
+                        x-show="aboutOpen"
+                        x-cloak
+                        x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 translate-y-1"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        x-transition:leave="transition ease-in duration-100"
+                        x-transition:leave-start="opacity-100 translate-y-0"
+                        x-transition:leave-end="opacity-0 translate-y-1"
+                        class="absolute left-1/2 top-full z-50 mt-3 w-52 -translate-x-1/2 rounded-xl border border-chocolate-100 bg-white py-2 shadow-xl shadow-chocolate-900/10"
+                        role="menu"
+                    >
+                        <a href="{{ route('our-story') }}" role="menuitem" @class(['block px-4 py-2.5 text-sm font-semibold text-chocolate-700 transition hover:bg-beige hover:text-terracotta-500', 'bg-beige text-terracotta-500' => request()->routeIs('our-story')]) @if(request()->routeIs('our-story')) aria-current="page" @endif>Our Story</a>
+                        <a href="{{ route('about-pahewo') }}" role="menuitem" @class(['block px-4 py-2.5 text-sm font-semibold text-chocolate-700 transition hover:bg-beige hover:text-terracotta-500', 'bg-beige text-terracotta-500' => request()->routeIs('about-pahewo')]) @if(request()->routeIs('about-pahewo')) aria-current="page" @endif>Who We Are</a>
+                    </div>
+                </div>
             </nav>
 
             <div class="flex shrink-0 items-center gap-3">
@@ -56,11 +84,26 @@
             <div class="mx-auto max-w-7xl px-6 py-5">
                 <div class="flex flex-col divide-y divide-chocolate-100">
                     <a href="{{ route('home') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('home')]) @if(request()->routeIs('home')) aria-current="page" @endif>Home</a>
-                    <a href="{{ route('rooms.index') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('rooms.*')]) @if(request()->routeIs('rooms.*')) aria-current="page" @endif>Rooms</a>
-                    <a href="{{ route('dining') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('dining')]) @if(request()->routeIs('dining')) aria-current="page" @endif>Dining</a>
-                    <a href="{{ route('conference-meeting') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('conference-meeting')]) @if(request()->routeIs('conference-meeting')) aria-current="page" @endif>Conference &amp; Meeting</a>
+                    <a href="{{ route('rooms.index') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('rooms.*')]) @if(request()->routeIs('rooms.*')) aria-current="page" @endif>Accommodation</a>
+                    <a href="{{ route('dining') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('dining')]) @if(request()->routeIs('dining')) aria-current="page" @endif>Restaurant &amp; Cafe</a>
+                    <a href="{{ route('conference-meeting') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('conference-meeting')]) @if(request()->routeIs('conference-meeting')) aria-current="page" @endif>Meeting &amp; Events</a>
                     <a href="{{ route('contact') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('contact')]) @if(request()->routeIs('contact')) aria-current="page" @endif>Contact</a>
-                    <a href="{{ route('about-pahewo') }}" @click="open = false" @class(['public-mobile-nav-link', 'public-mobile-nav-link-active' => request()->routeIs('about-pahewo')]) @if(request()->routeIs('about-pahewo')) aria-current="page" @endif>About</a>
+
+                    <div>
+                        <button
+                            type="button"
+                            @click="aboutOpen = !aboutOpen"
+                            @class(['public-mobile-nav-link flex w-full items-center justify-between', 'public-mobile-nav-link-active' => request()->routeIs('our-story', 'about-pahewo')])
+                            :aria-expanded="aboutOpen.toString()"
+                        >
+                            About
+                            <svg class="h-4 w-4 transition" :class="aboutOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+                        </button>
+                        <div x-show="aboutOpen" x-cloak class="space-y-1 pb-3 pl-4">
+                            <a href="{{ route('our-story') }}" @click="open = false" @class(['block py-2 text-sm font-medium text-chocolate-700 transition hover:text-terracotta-500', 'text-terracotta-500' => request()->routeIs('our-story')]) @if(request()->routeIs('our-story')) aria-current="page" @endif>Our Story</a>
+                            <a href="{{ route('about-pahewo') }}" @click="open = false" @class(['block py-2 text-sm font-medium text-chocolate-700 transition hover:text-terracotta-500', 'text-terracotta-500' => request()->routeIs('about-pahewo')]) @if(request()->routeIs('about-pahewo')) aria-current="page" @endif>Who We Are</a>
+                        </div>
+                    </div>
                 </div>
                 <a href="{{ route('booking-inquiry.create') }}" @click="open = false" class="btn-primary mt-5 w-full justify-center text-sm font-extrabold uppercase tracking-[0.14em]">Book Now</a>
             </div>

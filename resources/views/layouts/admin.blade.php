@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=cormorant-garamond:400,500,600,700|poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     <x-vite-assets />
+    @stack('styles')
 </head>
 <body class="min-h-screen bg-beige font-sans text-ink antialiased" x-data="{ sidebarOpen: false }">
     <div class="flex min-h-screen">
@@ -80,5 +81,7 @@
         class="fixed inset-0 z-40 bg-chocolate-950/60 lg:hidden"
         @click="sidebarOpen = false"
     ></div>
+
+    @stack('scripts')
 </body>
 </html>

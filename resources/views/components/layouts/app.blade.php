@@ -72,6 +72,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=cormorant-garamond:400,500,600,700|poppins:300,400,500,600,700&display=swap" rel="stylesheet">
     <x-vite-assets />
+    @stack('styles')
 </head>
 <body class="min-h-screen bg-white">
 
@@ -122,7 +123,8 @@
                     <li><a href="{{ route('rooms.index') }}" class="transition hover:text-gold-400">Rooms &amp; Suites</a></li>
                     <li><a href="{{ route('dining') }}" class="transition hover:text-gold-400">Dining</a></li>
                     <li><a href="{{ route('conference-meeting') }}" class="transition hover:text-gold-400">Meeting &amp; Events</a></li>
-                    <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">About PAHEWO</a></li>
+                    <li><a href="{{ route('our-story') }}" class="transition hover:text-gold-400">Our Story</a></li>
+                    <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">Who We Are</a></li>
                 </ul>
             </div>
             <div>
@@ -147,5 +149,6 @@
 
     <livewire:support-chat-widget />
     <x-cookie-notice />
+    @stack('scripts')
 </body>
 </html>

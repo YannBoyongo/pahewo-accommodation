@@ -47,6 +47,7 @@ Route::get('/contact', function () {
 Route::get('/experiences', [ExperienceController::class, 'index'])->name('experiences.index');
 Route::get('/experiences/{experience}', [ExperienceController::class, 'show'])->name('experiences.show');
 
+Route::view('/our-story', 'pages.our-story')->name('our-story');
 Route::view('/about-pahewo', 'pages.about-pahewo')->name('about-pahewo');
 
 Route::view('/privacy', 'pages.privacy')->name('privacy');

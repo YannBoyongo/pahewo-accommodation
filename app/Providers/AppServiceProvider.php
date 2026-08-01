@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             'pages.dining' => 'dining',
             'pages.conference-meeting' => 'conference-meeting',
             'pages.contact' => 'contact',
+            'pages.our-story' => 'our-story',
             'pages.about-pahewo' => 'about-pahewo',
             'pages.experiences' => 'experiences',
             'pages.privacy' => 'privacy',
@@ -50,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('siteSettings', Setting::instance());
 
             if ($view->name() === 'components.hero') {
-                $view->with('heroSection', HeroSection::instance());
+                $view->with('heroSlides', HeroSection::publishedSlides());
             }
         });
     }

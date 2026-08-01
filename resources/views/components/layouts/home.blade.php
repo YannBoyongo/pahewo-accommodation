@@ -117,7 +117,8 @@
                     <li><a href="{{ route('rooms.index') }}" class="transition hover:text-gold-400">Rooms &amp; Suites</a></li>
                     <li><a href="{{ route('dining') }}" class="transition hover:text-gold-400">Dining</a></li>
                     <li><a href="{{ route('conference-meeting') }}" class="transition hover:text-gold-400">Meeting &amp; Events</a></li>
-                    <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">About PAHEWO</a></li>
+                    <li><a href="{{ route('our-story') }}" class="transition hover:text-gold-400">Our Story</a></li>
+                    <li><a href="{{ route('about-pahewo') }}" class="transition hover:text-gold-400">Who We Are</a></li>
                 </ul>
             </div>
             <div id="contact" class="scroll-mt-8">

@@ -11,7 +11,7 @@
     ];
 
     $systemLinks = [
-        ['route' => 'dashboard.hero-section.edit', 'label' => 'Hero Section', 'icon' => 'hero', 'patterns' => ['dashboard.hero-section.*']],
+        ['route' => 'dashboard.hero-section.index', 'label' => 'Hero Slides', 'icon' => 'hero', 'patterns' => ['dashboard.hero-section.*']],
         ['route' => 'dashboard.settings.edit', 'label' => 'Settings', 'icon' => 'settings', 'patterns' => ['dashboard.settings.*']],
     ];
 @endphp

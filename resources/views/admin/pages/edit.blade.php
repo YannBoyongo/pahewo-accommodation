@@ -32,4 +32,37 @@
         </div>
 
     </div>
+
+    @if (collect($definition['fields'])->contains(fn ($field) => ($field['type'] ?? null) === 'ckeditor'))
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('textarea[data-ckeditor]').forEach((textarea) => {
+                    ClassicEditor
+                        .create(textarea, {
+                            toolbar: [
+                                'heading', '|',
+                                'bold', 'italic', 'link', '|',
+                                'bulletedList', 'numberedList', 'blockQuote', '|',
+                                'undo', 'redo',
+                            ],
+                        })
+                        .then((editor) => {
+                            const form = textarea.closest('form');
+
+                            if (! form) {
+                                return;
+                            }
+
+                            form.addEventListener('submit', () => {
+                                textarea.value = editor.getData();
+                            });
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                });
+            });
+        </script>
+    @endif
 </x-admin-layout>

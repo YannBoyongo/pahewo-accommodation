@@ -58,7 +58,7 @@ class TestimonialController extends Controller
     }
 
     /**
-     * @return array{guest_name: string, stay_type: ?string, quote: string, is_published: bool, sort_order: int}
+     * @return array{guest_name: string, stay_type: ?string, quote: string, rating: int, is_published: bool, sort_order: int}
      */
     private function validatedData(Request $request): array
     {
@@ -66,6 +66,7 @@ class TestimonialController extends Controller
             'guest_name' => ['required', 'string', 'max:255'],
             'stay_type' => ['nullable', 'string', 'max:255'],
             'quote' => ['required', 'string', 'max:3000'],
+            'rating' => ['required', 'integer', 'min:1', 'max:5'],
             'is_published' => ['sometimes', 'boolean'],
             'sort_order' => ['required', 'integer', 'min:0'],
         ]);

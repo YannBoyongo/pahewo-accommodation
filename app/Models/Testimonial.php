@@ -15,16 +15,18 @@ class Testimonial extends Model
         'guest_name',
         'stay_type',
         'quote',
+        'rating',
         'is_published',
         'sort_order',
     ];
 
     /**
-     * @return array{is_published: string, sort_order: string}
+     * @return array{rating: string, is_published: string, sort_order: string}
      */
     protected function casts(): array
     {
         return [
+            'rating' => 'integer',
             'is_published' => 'boolean',
             'sort_order' => 'integer',
         ];

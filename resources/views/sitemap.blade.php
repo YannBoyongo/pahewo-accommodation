@@ -33,6 +33,11 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>{{ route('our-story') }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>{{ route('about-pahewo') }}</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

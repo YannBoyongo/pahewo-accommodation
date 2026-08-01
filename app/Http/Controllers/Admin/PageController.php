@@ -70,7 +70,7 @@ class PageController extends Controller
             $rules[$key] = [
                 ($field['required'] ?? true) ? 'required' : 'nullable',
                 'string',
-                'max:'.($field['max'] ?? ($field['type'] === 'textarea' ? 10000 : 255)),
+                'max:'.($field['max'] ?? (in_array($field['type'], ['textarea', 'ckeditor'], true) ? 50000 : 255)),
             ];
         }
 

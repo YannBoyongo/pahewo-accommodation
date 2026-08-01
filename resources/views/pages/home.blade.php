@@ -21,7 +21,7 @@
                     <span class="absolute bottom-[-1rem] right-0 font-serif text-5xl leading-none text-chocolate-200" aria-hidden="true">&rdquo;</span>
                 </blockquote>
 
-                <a href="{{ route('about-pahewo') }}" class="btn-secondary mt-10 uppercase tracking-[0.14em]">
+                <a href="{{ route('our-story') }}" class="btn-secondary mt-10 uppercase tracking-[0.14em]">
                     Discover More
                 </a>
             </div>
@@ -56,61 +56,6 @@
         </div>
     </section>
 
-    {{-- Featured rooms --}}
-    <section class="border-y border-chocolate-100 bg-beige/30 py-20 sm:py-24">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="reveal text-center">
-                <p class="section-label">{{ $pageContent->value('rooms_label') }}</p>
-                <h2 class="mt-4 font-serif text-4xl font-semibold uppercase tracking-[0.04em] text-chocolate-900 sm:text-5xl lg:text-6xl">
-                    {{ $pageContent->value('rooms_heading') }}
-                </h2>
-            </div>
-
-            <div class="mt-14 grid items-stretch gap-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-                @foreach ($featuredRooms as $room)
-                    <x-room-card :room="$room" variant="featured" />
-                @endforeach
-            </div>
-
-            <div class="reveal mt-14 text-center">
-                <a href="{{ route('rooms.index') }}" class="btn-secondary uppercase tracking-[0.12em]">Explore All Rooms</a>
-            </div>
-        </div>
-    </section>
-
-    {{-- Dining experience --}}
-    <section id="dining" class="scroll-mt-8 overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
-        <div class="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20 lg:px-8">
-            <div class="reveal relative mx-auto h-[28rem] w-full max-w-2xl sm:h-[34rem] lg:h-[38rem]">
-                <figure class="absolute left-0 top-0 h-[52%] w-[68%] overflow-hidden rounded-2xl bg-chocolate-100 shadow-xl shadow-chocolate-900/10">
-                    <img src="{{ $pageContent->imageUrl('dining_image_one') }}"
-                        alt="Elegant restaurant dining room" class="h-full w-full object-cover transition duration-700 hover:scale-105">
-                </figure>
-                <figure class="absolute right-0 top-[21%] z-10 h-[48%] w-[58%] overflow-hidden rounded-2xl border-8 border-white bg-chocolate-100 shadow-xl shadow-chocolate-900/10 sm:border-[10px]">
-                    <img src="{{ $pageContent->imageUrl('dining_image_two') }}"
-                        alt="Warm and inviting restaurant interior" class="h-full w-full object-cover transition duration-700 hover:scale-105">
-                </figure>
-                <figure class="absolute bottom-0 left-[10%] z-20 h-[42%] w-[62%] overflow-hidden rounded-2xl border-8 border-white bg-chocolate-100 shadow-xl shadow-chocolate-900/10 sm:border-[10px]">
-                    <img src="{{ $pageContent->imageUrl('dining_image_three') }}"
-                        alt="Beautifully presented dining table" class="h-full w-full object-cover transition duration-700 hover:scale-105">
-                </figure>
-            </div>
-
-            <div class="reveal text-center">
-                <p class="section-label">{{ $pageContent->value('dining_label') }}</p>
-                <h2 class="mt-4 font-serif text-4xl font-semibold uppercase leading-tight tracking-[0.04em] text-chocolate-900 sm:text-5xl lg:text-6xl">
-                    {{ $pageContent->value('dining_heading') }}
-                </h2>
-                <p class="mx-auto mt-7 max-w-xl text-base leading-8 text-neutral-600 sm:text-lg">
-                    {{ $pageContent->value('dining_description') }}
-                </p>
-                <a href="{{ route('dining') }}" class="btn-secondary mt-9 uppercase tracking-[0.14em]">
-                    Learn More
-                </a>
-            </div>
-        </div>
-    </section>
-
     {{-- Partners --}}
     @if ($partners->isNotEmpty())
         <section class="border-y border-chocolate-100 bg-beige/40 py-16 sm:py-20">
@@ -132,7 +77,7 @@
                                 @endphp
                                 <div class="flex h-24 w-52 shrink-0 items-center justify-center px-5 sm:w-60">
                                     @if ($partnerLogo)
-                                        <img src="{{ $partnerLogo }}" alt="{{ $isDuplicate ? '' : $partner->name.' logo' }}" class="max-h-16 max-w-full object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100">
+                                        <img src="{{ $partnerLogo }}" alt="{{ $isDuplicate ? '' : $partner->name.' logo' }}" class="max-h-16 max-w-full object-contain">
                                     @else
                                         <span class="text-center font-serif text-xl font-semibold uppercase tracking-[0.08em] text-chocolate-700/70">
                                             {{ $partner->name }}
@@ -167,7 +112,14 @@
                                 {{ $testimonial->quote }}
                                 <span class="absolute bottom-[-1rem] right-0 text-5xl leading-none text-chocolate-200 sm:text-6xl" aria-hidden="true">&rdquo;</span>
                             </blockquote>
-                            <figcaption class="mt-7 text-sm text-neutral-500">
+                            <div class="mt-6 flex items-center justify-center gap-1" role="img" aria-label="Rated {{ $testimonial->rating }} out of 5 stars">
+                                @foreach (range(1, 5) as $star)
+                                    <svg class="h-5 w-5 {{ $star <= $testimonial->rating ? 'text-terracotta-500' : 'text-chocolate-200' }}" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                @endforeach
+                            </div>
+                            <figcaption class="mt-4 text-sm text-neutral-500">
                                 <span class="font-semibold text-chocolate-800">{{ $testimonial->guest_name }}</span>
                                 @if ($testimonial->stay_type)
                                     <span aria-hidden="true"> · </span>
@@ -195,7 +147,12 @@
     @php
         $locationBackground = $pageContent->imageUrl('location_background')
             ?: $featuredRooms->first()?->coverImageUrl();
-        $encodedAddress = rawurlencode($siteSettings->address);
+        $mapLatitude = '0.092760';
+        $mapLongitude = '32.528016';
+        $mapPlaceName = 'Endo Wellness Accommodation';
+        $mapQuery = $mapLatitude.','.$mapLongitude;
+        $directionsHref = 'https://www.google.com/maps/dir/?api=1&destination='.rawurlencode($mapQuery);
+        $googleMapsHref = 'https://www.google.com/maps?q='.rawurlencode($mapQuery);
     @endphp
 
     <section id="contact-location" class="relative isolate overflow-hidden bg-chocolate-950 py-20 sm:py-24 lg:py-28">
@@ -219,10 +176,6 @@
                     {{ $pageContent->value('location_description') }}
                 </p>
                 <div class="mt-8 flex flex-wrap gap-3">
-                    @php
-                        $directionsHref = $siteSettings->directions_url
-                            ?: 'https://www.google.com/maps/search/?api=1&query='.urlencode($siteSettings->address);
-                    @endphp
                     <a href="{{ $directionsHref }}" target="_blank" rel="noopener" class="btn-primary uppercase tracking-[0.12em]">
                         Get Directions
                     </a>
@@ -232,19 +185,58 @@
                 </div>
             </div>
 
-            <div class="reveal min-h-[24rem] overflow-hidden rounded-2xl border-8 border-white/90 bg-white shadow-2xl shadow-black/20 sm:min-h-[30rem] [&>iframe]:h-full [&>iframe]:min-h-[24rem] [&>iframe]:w-full [&>iframe]:sm:min-h-[30rem]">
-                @if ($siteSettings->map_embed)
-                    {!! $siteSettings->map_embed !!}
-                @else
-                    <iframe
-                        src="https://www.google.com/maps?q={{ $encodedAddress }}&amp;output=embed"
-                        title="Map showing {{ $siteSettings->address }}"
-                        class="h-full min-h-[24rem] w-full sm:min-h-[30rem]"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen></iframe>
-                @endif
+            <div class="reveal relative min-h-[24rem] overflow-hidden rounded-2xl border-8 border-white/90 bg-white shadow-2xl shadow-black/20 sm:min-h-[30rem]">
+                <div
+                    id="home-location-map"
+                    class="h-full min-h-[24rem] w-full sm:min-h-[30rem]"
+                    role="region"
+                    aria-label="Map showing Endo Wellness Accommodation"
+                    data-lat="{{ $mapLatitude }}"
+                    data-lng="{{ $mapLongitude }}"
+                    data-name="{{ $mapPlaceName }}"
+                    data-google-url="{{ $googleMapsHref }}"
+                ></div>
             </div>
         </div>
     </section>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapElement = document.getElementById('home-location-map');
+
+            if (! mapElement || typeof L === 'undefined') {
+                return;
+            }
+
+            const lat = Number(mapElement.dataset.lat);
+            const lng = Number(mapElement.dataset.lng);
+            const placeName = mapElement.dataset.name;
+            const googleUrl = mapElement.dataset.googleUrl;
+
+            const map = L.map(mapElement, {
+                scrollWheelZoom: false,
+            }).setView([lat, lng], 12);
+
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri',
+                maxZoom: 19,
+            }).addTo(map);
+
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Labels &copy; Esri',
+                maxZoom: 19,
+            }).addTo(map);
+
+            const marker = L.marker([lat, lng]).addTo(map);
+            marker.bindPopup(
+                `<div style="min-width:180px;text-align:center;font-family:Poppins,sans-serif;">
+                    <strong style="display:block;font-size:14px;color:#29101d;">${placeName}</strong>
+                    <a href="${googleUrl}" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:12px;color:#be1e63;text-decoration:underline;">Open in Google Maps</a>
+                </div>`,
+                { closeButton: true }
+            ).openPopup();
+        });
+    </script>
 </x-layouts.home>

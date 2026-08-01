@@ -21,6 +21,7 @@ class TestimonialFactory extends Factory
             'guest_name' => fake()->name(),
             'stay_type' => fake()->randomElement(['Leisure stay', 'Business stay', 'International traveller']),
             'quote' => fake()->paragraph(),
+            'rating' => fake()->numberBetween(4, 5),
             'is_published' => true,
             'sort_order' => fake()->numberBetween(0, 100),
         ];

@@ -41,7 +41,43 @@ class DatabaseSeeder extends Seeder
 
     private function seedHeroSection(): void
     {
-        HeroSection::instance();
+        if (HeroSection::query()->exists()) {
+            return;
+        }
+
+        $slides = [
+            [
+                'label' => 'Stay with Purpose.',
+                'heading' => 'Help Heal with Us',
+                'description' => 'Premium, ultra-secure apartments in Uganda where your travel experience directly funds 24/7 medical wellness, sanctuary, and dignity for women and young girls battling Endometriosis.',
+                'image_alt' => 'Premium apartments with warm evening light',
+                'image_url' => 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2000&auto=format&fit=crop',
+                'sort_order' => 1,
+            ],
+            [
+                'label' => 'More Than a Stay',
+                'heading' => 'A Gift of Hope',
+                'description' => 'Welcome to Endo Wellness Accommodation — a place of comfort, care, and purpose. Every booking helps support women and girls living with endometriosis across Africa.',
+                'image_alt' => 'Comfortable boutique hotel bedroom',
+                'image_url' => 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2000&auto=format&fit=crop',
+                'sort_order' => 2,
+            ],
+            [
+                'label' => 'Rest With Meaning',
+                'heading' => 'Hospitality That Heals',
+                'description' => 'Rest with comfort. Stay with purpose. Create hope — one booking at a time.',
+                'image_alt' => 'Warm and inviting guest suite',
+                'image_url' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=2000&auto=format&fit=crop',
+                'sort_order' => 3,
+            ],
+        ];
+
+        foreach ($slides as $slide) {
+            HeroSection::query()->create([
+                ...$slide,
+                'is_published' => true,
+            ]);
+        }
     }
 
     private function seedRooms(): void
@@ -167,7 +203,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Source of the Nile Day Trip',
                 'slug' => 'source-of-the-nile-day-trip',
                 'category' => 'Adventure',
-                'description' => "Travel to Jinja to stand where the Nile begins. Boat cruise, riverside lunch, and optional kayaking — guided by local experts and arranged door-to-door from the hotel.",
+                'description' => 'Travel to Jinja to stand where the Nile begins. Boat cruise, riverside lunch, and optional kayaking — guided by local experts and arranged door-to-door from the hotel.',
                 'duration' => 'Full day',
                 'price' => 140000,
                 'image_url' => 'https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=1600&auto=format&fit=crop',
@@ -189,7 +225,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Advocacy Afternoon at PAHEWO',
                 'slug' => 'advocacy-afternoon-at-pahewo',
                 'category' => 'Community',
-                'description' => "Spend an afternoon at the PAHEWO wellness sanctuary. Hear from the care team, learn what 24/7 endometriosis support really involves, and discover how travelers become lifelong advocates.",
+                'description' => 'Spend an afternoon at the PAHEWO wellness sanctuary. Hear from the care team, learn what 24/7 endometriosis support really involves, and discover how travelers become lifelong advocates.',
                 'duration' => 'Half day',
                 'price' => null,
                 'image_url' => 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1600&auto=format&fit=crop',
@@ -247,5 +283,4 @@ class DatabaseSeeder extends Seeder
             Partner::query()->updateOrCreate(['slug' => $partner['slug']], $partner);
         }
     }
-
 }

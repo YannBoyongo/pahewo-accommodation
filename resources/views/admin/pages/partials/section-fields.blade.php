@@ -24,7 +24,7 @@
 
 <div class="mt-6 grid gap-6 lg:grid-cols-2">
     @foreach ($fields as $key => $field)
-        <div @class(['lg:col-span-2' => in_array($field['type'], ['textarea', 'image'], true)])>
+        <div @class(['lg:col-span-2' => in_array($field['type'], ['textarea', 'image', 'ckeditor'], true)])>
             @if ($field['type'] === 'image')
                 <x-image-upload
                     :name="$key"
@@ -33,6 +33,20 @@
                     :current-url="$page->imageUrl($key) ?: null"
                     help="JPEG, PNG, or WebP up to 10MB. Existing image remains unless replaced or removed."
                 />
+            @elseif ($field['type'] === 'ckeditor')
+                <x-input-label :for="$key" :value="$field['label']" />
+                <textarea
+                    id="{{ $key }}"
+                    name="{{ $key }}"
+                    data-ckeditor
+                    rows="10"
+                    @class(['input-luxe mt-1', '!border-red-400 !ring-red-200' => $errors->has($key)])
+                    @required($field['required'] ?? true)
+                    @if($errors->has($key)) aria-invalid="true" aria-describedby="{{ $key }}-error" @endif
+                >{{ old($key, $page->value($key)) }}</textarea>
+                <div id="{{ $key }}-error">
+                    <x-input-error :messages="$errors->get($key)" class="mt-2" />
+                </div>
             @elseif ($field['type'] === 'textarea')
                 <x-input-label :for="$key" :value="$field['label']" />
                 <textarea

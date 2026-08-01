@@ -8,6 +8,7 @@
                     <tr>
                         <th class="px-6 py-4">Guest</th>
                         <th class="px-6 py-4">Testimonial</th>
+                        <th class="px-6 py-4">Rating</th>
                         <th class="px-6 py-4">Order</th>
                         <th class="px-6 py-4">Status</th>
                         <th class="px-6 py-4 text-right">Actions</th>
@@ -23,6 +24,7 @@
                             <td class="max-w-xl px-6 py-4 text-neutral-600">
                                 {{ Str::limit($testimonial->quote, 140) }}
                             </td>
+                            <td class="px-6 py-4 text-neutral-600">{{ $testimonial->rating }}/5</td>
                             <td class="px-6 py-4 text-neutral-600">{{ $testimonial->sort_order }}</td>
                             <td class="px-6 py-4">
                                 @if ($testimonial->is_published)
@@ -37,7 +39,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-12 text-center text-neutral-500">No testimonials yet.</td>
+                            <td colspan="6" class="px-6 py-12 text-center text-neutral-500">No testimonials yet.</td>
                         </tr>
                     @endforelse
                 </tbody>

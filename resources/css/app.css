@@ -137,7 +137,7 @@ body {
 }
 
 @utility public-nav-link {
-    @apply text-[15px] font-bold leading-6 uppercase tracking-[0.16em] text-chocolate-700 transition hover:text-terracotta-500;
+    @apply text-[12px] font-bold leading-5 uppercase tracking-[0.12em] text-chocolate-700 transition hover:text-terracotta-500;
 }
 
 @utility public-nav-link-active {

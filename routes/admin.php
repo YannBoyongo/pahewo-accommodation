@@ -36,7 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
 
-        Route::get('hero-section', [HeroSectionController::class, 'edit'])->name('hero-section.edit');
-        Route::put('hero-section', [HeroSectionController::class, 'update'])->name('hero-section.update');
+        Route::resource('hero-section', HeroSectionController::class)
+            ->parameters(['hero-section' => 'hero_section'])
+            ->except('show')
+            ->scoped(['hero_section' => 'id']);
     });
 });
